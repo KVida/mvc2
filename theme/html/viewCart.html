@@ -1,0 +1,172 @@
+{% extends "index.html" %}
+
+{% block title %}
+KVidaCMS
+{% endblock %}
+
+{% block header %}
+{{ include('viewHeader.html') }}
+{% endblock %}
+
+{% block navbar %}
+{{ include('viewMenu.html') }}
+{% endblock %}
+
+{% block sitebar %}
+<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+    {{ sideBarCategories | raw }}
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+    {% if message is defined %}
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <h3 class="text-center">{{ message }}</h3>
+    </div>
+    {% else %}
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <h3 class="text-center">Ваша корзина</h3>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <h5>Картинка:</h5>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <h5>Название:</h5>
+        </div>
+
+        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+            <h5>Цена:</h5>
+        </div>
+        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+            <h5>Выберете колличество: </h5>
+        </div>
+
+        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+            <h5>Общая цена:</h5>        
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <form method="post">
+            {{productHTML|raw}} 
+            <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+                <p></p>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-5 col-xs-5">
+                <h4>Общая сумма заказа:</h4>
+            </div>
+            <div class="col-lg-5 col-md-5 col-sm-3 col-xs-3 totalPriceOrder">
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                <p></p>
+            </div>
+            <input id="saveProductOrder" class="btn btn-success" type="submit" name="saveProductOrder" style="display:{{ displayCSSorder }}" value="Оформить заказ">
+        </form>       
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="display:{{ displayCSSuser }}">
+        <h2 class="text-center">Проверьте ваши данные:</h2>
+        <form method="post">
+            <div class="row">
+                {% for messageLine in messageError %}
+                    <div class="col-md-12">
+                        <p class="text-center text-danger bg-warning">{{messageLine}}</p>
+                    </div>
+                {% endfor %}
+            </div> 
+            <input type="hidden" name="idOrder" value="{{order.id}}">
+            <input type="hidden" name="idPurchase" value="{{purchase.id}}">
+            <input class="inputTotalPriceOrder" type="hidden" name="orderTotalPrise">
+            <input type="hidden" name="idUser" value="{{user.id}}">
+
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                    <div class="form-group {{error.0}}">
+                        <label for="form_phone">Телефон: </label>
+                        <input type="tel" name="phone" id="form_phone" class="form-control" value="{{user.phone}}" required>
+                    </div>
+                </div>
+                {% if order.id is empty %}
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                    <div class="form-group">
+                        <label for="form_city">Город </label>
+                        <input type="text" name="city" id="form_city" class="form-control" value="{{user.city}}" required>
+                    </div>
+                </div>
+                {% else %}
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                    <div class="form-group {{error.1}}">
+                        <label for="form_city">Город </label>
+                        <input type="text" name="city" id="form_city" class="form-control" value="{{order.city}}" required>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                    <div class="form-group {{error.2}}">
+                        <label for="form_street">проспект/улица </label>
+                        <input type="text" name="street" id="form_street" class="form-control" value="{{order.user_street}}" required>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                    <div class="form-group {{error.3}}">
+                        <label for="form_house_number">номер дома </label>
+                        <input type="text" name="house_number" id="form_house_number" class="form-control"  value="{{order.user_house_number}}" required>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                    <div class="form-group {{error.4}}">
+                        <label for="form_apartment_number">номер квартиры </label>
+                        <input type="text" name="apartment_number" id="form_apartment_number" class="form-control" value="{{order.user_apartment_number}}">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="form-group">
+                        <label for="form_message">Коментарий к заказу: </label>
+                        <textarea id="form_message" name="comment" class="form-control" rows="4">{{order.user_comment}}</textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                    <p></p>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                    <input id="saveOrder_js" class="btn btn-success" type="submit" name="saveOrder" value="Оформить заказ">
+                </div>
+        </form>
+    </div>
+    {% endif %}   
+</div>
+<script type="text/javascript">
+    $(function(){
+        $('div.product_js').each(function(i,elem){
+            var totalPrice = parseInt($($('div').find('.totalPrice')[i]).text());
+            $($('.product_js')[i]).find('.selectManyPurchases_js').change(function(e){
+                $(e.currentTarget).attr('value'); 
+                $($('.selectManyPurchases_js')[i]).attr('selected');
+                var newSelect = $($('.selectManyPurchases_js')[i]).val();
+                var onePrice = $($('div').find('.price')[i]).text();
+                totalPrice = parseInt(newSelect,10) * parseInt(onePrice,10);
+                $($('div').find('.totalPrice')[i]).text(totalPrice);
+
+                $($('div').find('.totalPriceOrder')).text(countTotalPrice());
+            }); 
+        });
+        $($('div').find('.totalPriceOrder')).text(countTotalPrice());
+
+        $('.inputTotalPriceOrder').val(countTotalPrice());
+
+        function countTotalPrice() {
+            var res = 0;
+            $('.totalPrice').each(function(i,elem){
+                res += parseInt($(elem).text(),10);
+            });
+            return res;
+        }
+    });
+</script>
+{% endblock %}

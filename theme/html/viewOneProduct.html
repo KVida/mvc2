@@ -1,0 +1,11 @@
+<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+    <div class="thumbnail">
+        <a href="/product/{{ product.url }}" >
+            <img src="/uploads/{{product.image}}" style="max-height: 140px;" class="d-inline-block align-top" alt="">
+            <p class="text-center">{{ product.name }}</p> 
+        </a>
+        <hr>
+
+        <button class="btn btn-success oneBuy_js" data-productId="{{ product.id }}"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span><span style="margin-left: 5px;">Купить</span></button>
+    </div>
+</div>

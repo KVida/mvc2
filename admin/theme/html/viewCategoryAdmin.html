@@ -1,0 +1,101 @@
+{% extends "index.html" %}
+
+{% block title %}
+Главная admin
+{% endblock %}
+
+{% block link %}
+../theme/assets/css/styleAdmin.css
+{% endblock %}
+
+{% block header %}
+    {{ include('view_header.html') }}
+{% endblock %}
+
+{% block nav %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <ul class="nav nav-tabs">
+                <li><a href="/admin/">Товары</a></li>
+                <li class="active"><a href="/admin/categories/">Категории</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1>Добавление категории</h1>
+        </div>
+        <div class="col-lg-1"></div>
+        <div class="col-lg-10">
+            <form method="post" enctype="multipart/form-data">
+                <div class="row">
+                    {% for messageLine in message %}
+                        <div class="col-md-12">
+                            <p class="text-center text-danger bg-warning">{{messageLine}}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+                <input type="hidden" name="id" value="{{ category.id }}">
+                <div class="col-lg-6">    
+                    <div class="form-group {{error.0}}">
+                        <label>Название категории</label>
+                        <input class="form-control" type="text" name="name" value="{{ category.name }}" required>
+                    </div>
+                </div>
+                <div class="col-lg-1">
+                    <div class="form-group">
+                        <label>Видимость</label>
+                        <input class="form-control" type="checkbox" name="visible" value={% if category.id is defined %} "1" checked {% else %} {% if category.visible > 0 %} "{{category.visible}}" checked {% else %} "{{category.visible}}" {% endif %} {% endif %}>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="form-group">
+                        <label>Картинка</label>
+                        <input class="form-control" type="file" name="image">
+                    </div>
+                </div>
+                <div class="col-lg-1">
+                    <div class="form-group">
+                        <p> {{ category.image }}</p>
+                    </div>
+                </div>
+                <div class="col-lg-6"> 
+                    <div class="form-group">
+                        <label>URL</label>
+                        <input class="form-control" type="text" name="url" value="{{ category.url }}">
+                    </div>
+                </div>
+                <div class="col-lg-6"> 
+                    <div class="form-group">
+                        <label>Категория <small>(нужно выбрать категорию к которой будет относиться новая категория)</small></label>
+                        <select name="parent_id" class="selectpicker form-control"> 
+                            {% include "main/tree-showOption.html.twig" with {'fullCategory':arrayCategor} only %}
+                        </select>
+                    </div>
+                </div>
+                <div class="card-block col-lg-12">                
+                    <div class="form-group">
+                        <script type="text/javascript" src="http://js.nicedit.com/nicEdit-latest.js"></script> <script type="text/javascript">
+                        //<![CDATA[
+                            bkLib.onDomLoaded(function() { nicEditors.allTextAreas() });
+                        //]]>
+                        </script>
+                        <label>Описание</label>
+                        <textarea class="form-control" name="description">{{ category.description }}</textarea>
+                    </div>
+                </div>
+                <div class="card-block col-lg-12">
+                    <input class="btn btn-primary" type="submit" name="save" value="Сохранить">
+                </div>
+            </form>
+        </div>
+        <div class="col-lg-1"></div>    
+    </div>
+</div>
+{% endblock %}

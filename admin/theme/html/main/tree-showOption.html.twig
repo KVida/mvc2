@@ -1,0 +1,4 @@
+<option value="0">Корневая категория</option> 
+{% for link in fullCategory %}
+        <option value="{{ link.id }}" style="margin-left:5px" {% if link.isSelected %}selected{% endif %}>{{ link.name }}</option>
+{% endfor %}s

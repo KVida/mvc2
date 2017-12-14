@@ -1,0 +1,30 @@
+<!DOCTYPE>
+<html>
+    <head>
+        <title>{% block title %}{% endblock %}</title>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+        <link href="../../theme/assets/lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+        <link href="{% block link %}{% endblock %}" rel="stylesheet">
+    </head>
+    <body>
+        <div id="wrapper">
+            {% block header %}
+            {% endblock %}
+    
+            {% block nav %}
+            {% endblock %}
+
+            {% block content %}
+            {% endblock %}
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <p></p>
+                        <p class="text-center"> &copy; Kvida 2017г.</p>
+                    </div>
+                </div>
+            </div>                     
+        </div>
+    </body>
+</html>

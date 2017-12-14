@@ -1,0 +1,28 @@
+{% extends "index.html" %}
+
+{% block title %}
+KVidaCMS
+{% endblock %}
+
+{% block header %}
+{{ include('viewHeader.html') }}
+{% endblock %}
+
+{% block navbar %}
+{{ include('viewMenu.html') }}
+{% endblock %}
+
+{% block sitebar %}
+<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+    {{ sideBarCategories | raw }}
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <h3 class="text-center">Ваш заказ принят.</h3>
+        <h4 class="text-center">Номер Вашего заказа № {{order.id}}</h4>
+    </div>
+</div>
+{% endblock %}

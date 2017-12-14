@@ -1,0 +1,29 @@
+{% extends "index.html" %}
+
+{% block title %}
+KVidaCMS
+{% endblock %}
+
+{% block header %}
+{{ include('viewHeader.html') }}
+{% endblock %}
+
+{% block navbar %}
+{{ include('viewMenu.html') }}
+{% endblock %}
+
+{% block sitebar %}
+{% endblock %}
+
+{% block content %}
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <h3 class="text-center">{{ textPage.title }}</h3>  
+    </div>
+    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"></div>
+    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+        {{ textPage.textpage | raw }}    
+    </div>
+    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"></div>
+</div>
+{% endblock %}

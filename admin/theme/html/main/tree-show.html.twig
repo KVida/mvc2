@@ -1,0 +1,14 @@
+{% for link in fullCategory %}
+    <li>
+        {% if link.parentId is  null %}
+            <a href="{{ link.id }}">{{ link.id }}. {{ link.name }}</a>
+        {% endif %}
+
+        {% if link.parent is not null %}
+            <ul>
+                {{ link.id }}. {{ link.nameCat|e }}
+                {% include "main/tree-show.html.twig" with {'cats': link.children } %}
+            </ul>
+        {% endif %}
+    </li>
+{% endfor %}

@@ -1,0 +1,30 @@
+{% extends "index.html" %}
+
+{% block title %}
+KVidaCMS
+{% endblock %}
+
+{% block header %}
+{{ include('viewHeader.html') }}
+{% endblock %}
+
+{% block navbar %}
+{{ include('viewMenu.html') }}
+{% endblock %}
+
+{% block sitebar %}
+<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+    {{ sideBarCategories | raw }}
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="col-xs-9 col-sm-9 col-md-9">
+    <div class="col-xs-8 col-sm-8 col-md-8 .col-md-offset-2">
+        <p class="lead">{{ message }}</p>
+    </div>
+    <div class="col-xs-4 col-sm-4 col-md-4">
+        <a class="navbar-brand btn-primary" href="/">Перейти на главную</a>
+    </div>
+</div>
+{% endblock %}

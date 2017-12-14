@@ -1,0 +1,157 @@
+{% extends "index.html" %}
+
+{% block title %}
+Главная admin
+{% endblock %}
+
+{% block link %}
+../theme/assets/css/styleAdmin.css
+{% endblock %}
+
+{% block header %}
+    {{ include('view_header.html') }}
+{% endblock %}
+
+{% block nav %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="/admin/">Товары</a></li>
+                <li><a href="/admin/categories/">Категории</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-1">
+        </div>
+        <div class="col-lg-10">
+            <form method="post" enctype="multipart/form-data">
+                <div class="row">
+                    {% for messageLine in message %}
+                        <div class="col-md-12">
+                            <p class="text-center text-danger bg-warning">{{messageLine}}</p>
+                        </div>
+                    {% endfor %}
+                </div> 
+
+                <input type="hidden" name="id" value="{{ product.id }}">
+                <div class="col-lg-6">    
+                    <div class="form-group {{error.0}}">
+                        <label>Название</label>
+                        <input class="form-control" type="text" name="name" value="{{ product.name }}" required>
+                    </div>
+                </div>
+                <div class="col-lg-1">  
+                    <div class="form-group">
+                        <label>Видимость</label>
+                        <input class="form-control" type="checkbox" name="visible" value={% if product.id is defined %} "1" checked {% else %} "{{product.visible}}" checked {% endif %}>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="form-group">
+                        <label>Картинка основная</label>
+                        <input class="form-control" type="file" name="image">
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <div class="form-group">
+                        <p></p>
+                        <p> {{ product.image }}</p>
+                    </div>
+                </div>
+                <div class="col-lg-6"> 
+                    <div class="form-group">
+                        <label>Категория <small>(нужно выбрать категорию к которой будет относиться товара)</small></label>
+                        <select name="parent_id" class="selectpicker form-control">
+                            {% include "main/tree-showOption.html.twig" with {'fullCategory':arrayCategor} only %}
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label>URL</label>
+                        <input class="form-control" type="text" name="url" value="{{ product.url }}">
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label>Остальные картинки</label>
+                        <input class="form-control" type="file" name="productImgs[]"  multiple>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="form-group">
+                        <p></p>
+                        {% for images in arrayImage %}
+                            <p> {{ images }}</p>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="card-block col-lg-12">
+                    <div class="form-group">
+                        <script type="text/javascript" src="http://js.nicedit.com/nicEdit-latest.js"></script> <script type="text/javascript">
+                        //<![CDATA[
+                            bkLib.onDomLoaded(function() { nicEditors.allTextAreas() });
+                        //]]>
+                        </script>
+                        <label for="textTextarea">Описание</label>
+                        <textarea class="form-control" id="textTextarea" name="description" cols="40">{{ product.description }}</textarea>
+                    </div>
+                </div>
+                <!-- variant -->
+                <input type="hidden" name="idVariant" value="{{ variant.id }}"> 
+                <input type="hidden" name="product_id" value="{{ variant.product_id }}">
+
+                <div class="form-group {{error.1}}">
+                    <div class="col-lg-3">
+                        <label>Название варианта</label>
+                        <input class="form-control" type="text" name="nameVariant" value="{{ variant.name }}" required>
+                    </div>
+                </div>
+                <div class="form-group {{error.2}}">
+                    <div class="col-lg-2">
+                        <label>Артикул</label>
+                        <input class="form-control" type="text" name="sku" value="{{ variant.sku }}" required>
+                    </div>
+                </div>
+                <div class="form-group {{error.3}}">
+                    <div class="col-lg-2">
+                        <label>Цена</label>
+                        <input class="form-control" type="text" name="price" value="{{ variant.price }}">
+                    </div>
+                </div>
+                <div class="form-group {{error.4}}">
+                    <div class="col-lg-2">
+                        <label>Со скидкой</label>
+                        <input class="form-control" type="text" name="sale_price" value="{{ variant.sale_price }}">
+                    </div>
+                </div>
+                <div class="form-group {{error.5}}">
+                    <div class="col-lg-2">
+                        <label>Колличество</label>
+                        <input class="form-control" type="text" name="stock" value="{{ variant.stock }}" required>
+                    </div>
+                </div>
+                <div class="col-lg-1">
+                    <p></p>
+                </div>
+                
+                <div class="col-lg-5"></div>
+                <div class="col-lg-7">
+                    <p></p>
+                    <input class="btn btn-primary" type="submit" name="save" value="Сохранить">
+                </div>
+            </form>
+        </div>
+        <div class="col-lg-1">
+        </div>
+    </div>
+</div>
+{% endblock %}

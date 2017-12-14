@@ -1,0 +1,89 @@
+{% extends "index.html" %}
+
+{% block title %}
+Главная admin
+{% endblock %}
+
+{% block link %}
+../theme/assets/css/styleAdmin.css
+{% endblock %}
+
+{% block header %}
+    {{ include('view_header.html') }}
+{% endblock %}
+
+{% block nav %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="/admin/pages/">Страницы</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1>Добавление страниц</h1>
+        </div>
+        <div class="col-lg-1"></div>
+        <div class="col-lg-10">
+             <form method="post">
+                <input type="hidden" name="id" value="{{ page.id }}">
+                <div class="row">
+                    {% for messageLine in message %}
+                        <div class="col-md-12">
+                            <p class="text-center text-danger bg-warning">{{messageLine}}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="col-lg-5">
+                    <div class="form-group">
+                        <label>Название страницы</label>
+                        <input class="form-control {{ error.0 }}" type="text" name="title" value="{{ page.title }}" required>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="form-group">
+                        <label>URL</label>
+                        <input class="form-control" type="text" name="url" value="{{ page.url }}">
+                    </div>
+                </div>
+                <div class="col-lg-1">
+                    <div class="form-group">
+                        <label>Видимость</label>
+                        <input class="form-control" type="checkbox" name="visible" value={% if page.id is defined %} "1" checked {% else %} "{{page.visible}}" checked {% endif %}">
+                    </div>
+                </div>
+                <div class="col-lg-1"></div>
+                <div class="col-lg-12"> 
+                    <div class="form-group">
+                        <script type="text/javascript" src="http://js.nicedit.com/nicEdit-latest.js"></script> <script type="text/javascript">
+                        //<![CDATA[
+                            bkLib.onDomLoaded(function() { nicEditors.allTextAreas() });
+                        //]]>
+                        </script>
+                        <label>Текст страницы <small></small></label>
+                        <textarea class="form-control" name="textpage" rows="8">{{ page.textpage }}</textarea>
+                    </div>
+                </div>
+                <div class="col-lg-12"> 
+                    <div class="form-group">
+                        <label>Описание</label>
+                        <textarea class="form-control" name="description">{{ page.description }}</textarea>
+                    </div>
+                </div>
+                <div class="col-lg-12"> 
+                    <input type="submit" class="btn btn-primary" name="save" value="Сохранить">
+                </div>
+            </form>
+        </div>
+        <div class="col-lg-1"></div>            
+        </div>        
+    </div>
+</div> 
+{% endblock %}

@@ -1,0 +1,25 @@
+body {
+    width : 1300px;
+    font : 13px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+}
+#wrapper {
+    margin : 0 auto;
+}
+
+
+.hiddenProduct, .hiddenPage {
+    opacity : 0.5;
+}
+
+.aPage {
+    font-size : 18px;
+    font-weight : bold;
+}
+
+.col-lg-12 .divProduct {
+    margin-top: 5px;
+}
+
+.col-lg-12 .divPage {
+    margin-top: 5px;
+}

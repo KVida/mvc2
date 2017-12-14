@@ -1,0 +1,70 @@
+body {
+    font : 13px "Helvetica Neue", Arial, Helvetica, sans-serif;
+    margin : 0 8%;
+    padding : 0; 
+    margin-bottom : 60px;
+}
+
+#wrapper {
+    margin : 0 auto;
+}
+
+html {
+    position : relative;
+    min-height : 100%;
+}
+
+#footer {
+    position : absolute;
+    bottom : 0;
+    height : 60px;
+    background-color : #f5f5f5;
+}
+
+.thumbnail:hover {
+    box-shadow : 0 0 13px 0 rgba(0,0,0,.4);
+}
+
+.sidebar {
+    background-color : #f5f5f5;
+}
+
+.userName {
+    margin-right : 10px;
+}
+
+.products_price {
+    font-size : 18px;
+    font-weight : bold;
+}
+
+.title {
+    font-size : 15px;
+    font-weight : bold;
+    margin-top : 10px;
+}
+
+.content {
+    margin-top : 5px;
+    line-height : 15px;
+}
+
+.totalPriceOrder:after {
+    content : "грн";
+    margin-left : 3px;
+}
+
+.totalPrice:after {
+    content : "грн";
+    margin-left : 3px;
+}
+
+.col-lg-5.totalPriceOrder {
+    height : 36px;
+    margin-top : 10px;
+    font-size : 16px;
+}
+
+.productCart {
+    color : blue;
+}

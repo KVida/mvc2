@@ -1,0 +1,39 @@
+
+<input type="hidden" name="id[]" value="{{contentProducts.id}}">
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 product_js">
+    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+        <img src="/uploads/{{ contentProducts.image }}" height="15%">
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+        <h5>{{ contentProducts.name }}</h5>
+        <h6>{{ contentVariant.name }}</h6>
+    </div>
+
+    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 price">
+    {% if contentVariant.price is not empty %}
+        {{ contentVariant.price }} грн
+    {% else %}
+        {% if contentVariant.sale_price is not empty %}
+            {{ contentVariant.sale_price }} грн
+        {% else %}
+            уточняется
+        {% endif %}
+    {% endif %}
+    </div>
+    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+        <select class="selectManyPurchases_js" type='number' name='amount[]'> 
+            {% for i in 0..contentVariant.stock %}
+                {% if i==amountProduct %}
+                    <option value='{{ i }}' selected>{{ i }}</option>
+                {% else %}
+                    <option value='{{ i }}'>{{ i }}</option>
+                {% endif %}
+            {% endfor %}    
+        </select>
+    </div>
+    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 totalPrice">
+        {{totalPrice}}  
+    </div>
+    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+    </div>
+</div>
