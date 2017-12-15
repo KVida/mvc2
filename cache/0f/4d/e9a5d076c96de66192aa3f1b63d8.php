@@ -91,7 +91,7 @@ class __TwigTemplate_0f4de9a5d076c96de66192aa3f1b63d8 extends Twig_Template
                     amount : '1',
                 }, 
                 success : function(dataName) {
-                    \$('.productCart').html(dataName);
+                   \$('.productCart').text(calculateProductsCount());
                 }
             });
         });

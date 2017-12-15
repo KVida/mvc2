@@ -7,9 +7,13 @@
                         <li><a href="{{ menuPage.url }}" class="clickMenu">{{ menuPage.title }}</a></li>
                     {% endfor %}
 
-                    <li><a href="/cart/">Корзина <span class="productCart">{{global_numCart}}</span></a></li>
+                    <li><a href="/cart/">Корзина <span class="badge productCart"></span></a></li>
                 </ul> 
             </div>
         </nav>
     </div>
 </div> 
+
+<script type="text/javascript">
+    $('.productCart').text(calculateProductsCount());
+</script>

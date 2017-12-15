@@ -1,0 +1,64 @@
+<?php
+	class Route
+	{
+		public static function run()
+		{
+			$models_dir = 'models/';
+			$controllers_dir = 'controllers/';
+			$controller_name = null;
+			
+			$uri = parse_url($_SERVER['REQUEST_URI']);
+
+			$uri_array = array(
+				'/' => 'ControllerProducts',
+				'/page' => 'ControllerPage',
+				'/product' => 'ControllerProduct',
+			);
+
+			$uri['var'] = array_slice(explode('/', $uri['path']), 1);
+			
+			if (isset($uri['var'][0])) {
+				if (empty($uri['var'][0]) && empty($uri['var'][1])) { 
+					$controller_name = '/';
+				} elseif (($uri['var'][0]=='page' && empty($uri['var'][1])) || ($uri['var'][0]=='product' && empty($uri['var'][1]))){
+					header( 'Location: /');
+				}else {
+					$controller_name = '/' . $uri['var'][0];
+				}
+
+				if ($uri['var'][0] == 'page' && !empty($uri['var'][1])) {
+					$controller_name = '/' . $uri['var'][0];
+				}
+
+				if ($uri['var'][0] == 'product' && !empty($uri['var'][1])) {
+					$controller_name = '/' . $uri['var'][0];
+				}
+				
+				if (file_exists($controllers_dir . $uri_array[$controller_name] . '.php')) {
+
+					require $controllers_dir . $uri_array[$controller_name] . '.php';
+					$controller = new $uri_array[$controller_name]();
+
+					if (method_exists($controller, 'fetch') || method_exists($controller, 'fetch_param')){
+						if (isset($uri['var'][1]) && !empty($uri['var'][1])) {
+							print $controller->fetch_param($uri['var'][1]);
+						} else {
+							print $controller->fetch();
+						}
+						
+					} else {
+						Route::error404();
+					}
+				} else {
+					Route::error404();
+				}
+			}
+		}
+		
+
+		public static function error404()
+		{
+			echo "<h1> 404 error </h1>";
+		}
+		
+	}

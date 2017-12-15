@@ -17,12 +17,12 @@ class ControllerMenu
         }
         $twig->addGlobal("global_menuPages", $menuPages);
 
-        if (isset($_COOKIE['product_cart'])) { //
+        /*if (isset($_COOKIE['product_cart'])) { //
             $product_cart = unserialize($_COOKIE['product_cart']);
             $countProductCart = count($product_cart);
             if ($countProductCart > 0) {
                 $twig->addGlobal("global_numCart", $countProductCart);
             } 
-        }
+        }*/
     }
 }

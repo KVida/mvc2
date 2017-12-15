@@ -183,11 +183,11 @@ class __TwigTemplate_6778ca63e853d100f61d6c21f6092ed2 extends Twig_Template
             echo "\" required>
                     </div>
                 </div>
-                ";
+                <!-- ";
             // line 89
             if (twig_test_empty($this->getAttribute((isset($context["order"]) ? $context["order"] : null), "id"))) {
-                // line 90
-                echo "                <div class=\"col-lg-6 col-md-6 col-sm-6 col-xs-6\">
+                echo " -->
+                <div class=\"col-lg-6 col-md-6 col-sm-6 col-xs-6\">
                     <div class=\"form-group\">
                         <label for=\"form_city\">Город </label>
                         <input type=\"text\" name=\"city\" id=\"form_city\" class=\"form-control\" value=\"";
@@ -196,7 +196,7 @@ class __TwigTemplate_6778ca63e853d100f61d6c21f6092ed2 extends Twig_Template
                 echo "\" required>
                     </div>
                 </div>
-                ";
+                <!-- ";
             } else {
                 // line 97
                 echo "                <div class=\"col-lg-6 col-md-6 col-sm-6 col-xs-6\">
@@ -213,8 +213,9 @@ class __TwigTemplate_6778ca63e853d100f61d6c21f6092ed2 extends Twig_Template
                 </div>
                 ";
             }
-            // line 104
-            echo "            </div>
+            // line 103
+            echo " -->
+            </div>
             <div class=\"row\">
                 <div class=\"col-lg-6 col-md-6 col-sm-6 col-xs-6\">
                     <div class=\"form-group ";
@@ -321,6 +322,6 @@ class __TwigTemplate_6778ca63e853d100f61d6c21f6092ed2 extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  279 => 142,  262 => 129,  251 => 121,  246 => 119,  239 => 115,  234 => 113,  227 => 109,  222 => 107,  217 => 104,  210 => 100,  205 => 98,  202 => 97,  195 => 93,  190 => 90,  188 => 89,  182 => 86,  177 => 84,  170 => 80,  165 => 78,  161 => 77,  158 => 76,  149 => 73,  146 => 72,  142 => 71,  135 => 67,  129 => 64,  114 => 52,  88 => 28,  82 => 25,  79 => 24,  77 => 23,  74 => 22,  71 => 21,  64 => 17,  61 => 16,  58 => 15,  52 => 12,  49 => 11,  43 => 8,  40 => 7,  35 => 4,  32 => 3,);
+        return array (  280 => 142,  263 => 129,  252 => 121,  247 => 119,  240 => 115,  235 => 113,  228 => 109,  223 => 107,  217 => 103,  210 => 100,  205 => 98,  202 => 97,  195 => 93,  188 => 89,  182 => 86,  177 => 84,  170 => 80,  165 => 78,  161 => 77,  158 => 76,  149 => 73,  146 => 72,  142 => 71,  135 => 67,  129 => 64,  114 => 52,  88 => 28,  82 => 25,  79 => 24,  77 => 23,  74 => 22,  71 => 21,  64 => 17,  61 => 16,  58 => 15,  52 => 12,  49 => 11,  43 => 8,  40 => 7,  35 => 4,  32 => 3,);
     }
 }

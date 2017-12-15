@@ -22,7 +22,7 @@
     </div>
     <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
         <select class="selectManyPurchases_js" type='number' name='amount[]'> 
-            {% for i in 0..contentVariant.stock %}
+            {% for i in 1..contentVariant.stock %}
                 {% if i==amountProduct %}
                     <option value='{{ i }}' selected>{{ i }}</option>
                 {% else %}
@@ -35,5 +35,25 @@
         {{totalPrice}}  
     </div>
     <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+        <a class="btn btn-danger pull-right btn_delete_js" aria-label="Bold" data-productId="{{contentProducts.id}}"><span class="glyphicon glyphicon-remove"></span></a>
     </div>
 </div>
+
+<script type="text/javascript">
+    $(function(){
+        $('.btn_delete_js').click(function(e){
+            $.ajax({
+                method : 'POST',
+                url : '/core/ajax_delete.php',
+                dataType : 'json',
+                data : {
+                    id : $(e.currentTarget).attr('data-productId')
+                }, 
+                success : function(dataName) {
+                    $('.productCart').text(calculateProductsCount());
+                    location.reload();
+                }
+            });
+        });
+    });
+</script>

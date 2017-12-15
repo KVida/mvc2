@@ -97,7 +97,7 @@ KVidaCMS
                     amount : $('#selectManyPurchases_js').val(),
                 }, 
                 success : function(dataName) {
-                    console.log(dataName);
+                    $('.productCart').text(calculateProductsCount());
                 }
             });
         });

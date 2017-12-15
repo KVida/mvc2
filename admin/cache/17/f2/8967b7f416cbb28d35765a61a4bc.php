@@ -40,18 +40,6 @@ class __TwigTemplate_17f28967b7f416cbb28d35765a61a4bc extends Twig_Template
                     <li class=\"nav-item\">
                         <a href=\"pages/\"><img src=\"theme/assets/images/pages.png\" alt=\"pages\">Страницы</a>
                     </li>
-                    <li class=\"nav-item\">
-                        <!-- <a href=\"orders/\"><img src=\"theme/assets/images/orders.png\" alt=\"orders\">Заказы</a> -->
-                    </li>
-                    <li class=\"nav-item\">
-                        <!-- <a href=\"users/\"><img src=\"theme/assets/images/users.png\" alt=\"users\">Покупатели</a> -->
-                    </li>
-                    <li class=\"nav-item\">
-                        <!-- <a href=\"blog/\"><img src=\"theme/assets/images/blog.png\" alt=\"blog\">Блог</a> -->
-                    </li>
-                    <li class=\"nav-item\">
-                        <!-- <a href=\"settings/\"><img src=\"theme/assets/images/settings.png\" alt=\"settings\">Настройки</a> -->
-                    </li>
                 </ul>
             </div>
         </nav>
@@ -66,6 +54,6 @@ class __TwigTemplate_17f28967b7f416cbb28d35765a61a4bc extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  19 => 1,  96 => 18,  93 => 17,  86 => 14,  82 => 12,  79 => 11,  74 => 7,  69 => 4,  54 => 19,  52 => 17,  49 => 16,  47 => 14,  44 => 13,  42 => 11,  29 => 4,  24 => 1,  110 => 56,  89 => 15,  80 => 31,  77 => 30,  61 => 16,  58 => 15,  51 => 12,  48 => 11,  43 => 8,  40 => 7,  35 => 7,  32 => 3,);
+        return array (  19 => 1,  108 => 54,  87 => 36,  78 => 29,  75 => 28,  61 => 16,  58 => 15,  51 => 12,  48 => 11,  43 => 8,  40 => 7,  35 => 4,  32 => 3,);
     }
 }

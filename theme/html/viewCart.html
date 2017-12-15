@@ -86,21 +86,21 @@ KVidaCMS
                         <input type="tel" name="phone" id="form_phone" class="form-control" value="{{user.phone}}" required>
                     </div>
                 </div>
-                {% if order.id is empty %}
+                <!-- {% if order.id is empty %} -->
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                     <div class="form-group">
                         <label for="form_city">Город </label>
                         <input type="text" name="city" id="form_city" class="form-control" value="{{user.city}}" required>
                     </div>
                 </div>
-                {% else %}
+                <!-- {% else %}
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                     <div class="form-group {{error.1}}">
                         <label for="form_city">Город </label>
                         <input type="text" name="city" id="form_city" class="form-control" value="{{order.city}}" required>
                     </div>
                 </div>
-                {% endif %}
+                {% endif %} -->
             </div>
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">

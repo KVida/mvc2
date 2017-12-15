@@ -149,8 +149,8 @@ class __TwigTemplate_aee868121a5da7912b600ce1ec70f595 extends Twig_Template
         // line 68
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["error"]) ? $context["error"] : null), 3), "html", null, true);
         echo "\">
-                            <label for=\"form_email\">Пароль *</label>
-                            <input id=\"form_email\" type=\"password\" name=\"password\" class=\"form-control\" placeholder=\"Пожалуйста, введите ваш пароль\" required=\"required\" data-error=\"Valid password is required.\">
+                            <label for=\"form_pass\">Пароль *</label>
+                            <input id=\"form_pass\" type=\"password\" name=\"password\" class=\"form-control\" placeholder=\"Пожалуйста, введите ваш пароль\" required=\"required\" data-error=\"Valid password is required.\">
                             <div class=\"help-block with-errors\"></div>
                         </div>
                     </div>
@@ -160,8 +160,8 @@ class __TwigTemplate_aee868121a5da7912b600ce1ec70f595 extends Twig_Template
         // line 76
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["error"]) ? $context["error"] : null), 4), "html", null, true);
         echo "\">
-                            <label for=\"form_phone\">Повторите пароль *</label>
-                            <input id=\"form_phone\" type=\"password\" name=\"passwordRepeat\" class=\"form-control\" placeholder=\"Пожалуйста, повторите ваш пароль\" required=\"required\" data-error=\"Valid password is required.\">
+                            <label for=\"form_repaetpass\">Повторите пароль *</label>
+                            <input id=\"form_repaetpass\" type=\"password\" name=\"passwordRepeat\" class=\"form-control\" placeholder=\"Пожалуйста, повторите ваш пароль\" required=\"required\" data-error=\"Valid password is required.\">
                             <div class=\"help-block with-errors\"></div>
                         </div>
                     </div>

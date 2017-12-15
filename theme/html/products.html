@@ -36,7 +36,7 @@ KVidaCMS
                     amount : '1',
                 }, 
                 success : function(dataName) {
-                    $('.productCart').html(dataName);
+                   $('.productCart').text(calculateProductsCount());
                 }
             });
         });

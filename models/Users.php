@@ -40,7 +40,7 @@ class Users extends Database
             return false;
         }
 
-        $query = "SELECT id, name, phone, email, city, password, status FROM users WHERE id = '$id'";
+        $query = "SELECT id, name, phone, email, city, password FROM users WHERE id = '$id'";
         $this->query($query);
         return $this->result();
     }
@@ -60,7 +60,7 @@ class Users extends Database
             return false;
         }
 
-        $query = "SELECT id, name, phone, email, city, password, status FROM users WHERE email = '$email'  LIMIT 1";
+        $query = "SELECT id, name, phone, email, city, password FROM users WHERE email = '$email'  LIMIT 1";
         $this->query($query);
         return $this->result();
     }

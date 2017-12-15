@@ -39,15 +39,16 @@ class __TwigTemplate_f5d8aaa24f51149f636aee817e4e6583 extends Twig_Template
         $context = array_merge($_parent, array_intersect_key($context, $_parent));
         // line 9
         echo "
-                    <li><a href=\"/cart/\">Корзина <span class=\"productCart\">";
-        // line 10
-        echo twig_escape_filter($this->env, (isset($context["global_numCart"]) ? $context["global_numCart"] : null), "html", null, true);
-        echo "</span></a></li>
+                    <li><a href=\"/cart/\">Корзина <span class=\"badge productCart\"></span></a></li>
                 </ul> 
             </div>
         </nav>
     </div>
-</div> ";
+</div> 
+
+<script type=\"text/javascript\">
+    \$('.productCart').text(calculateProductsCount());
+</script>";
     }
 
     public function getTemplateName()
@@ -62,6 +63,6 @@ class __TwigTemplate_f5d8aaa24f51149f636aee817e4e6583 extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  44 => 10,  41 => 9,  30 => 7,  26 => 6,  19 => 1,);
+        return array (  41 => 9,  30 => 7,  26 => 6,  19 => 1,  217 => 83,  211 => 80,  207 => 78,  197 => 76,  192 => 75,  188 => 74,  180 => 68,  176 => 66,  171 => 64,  168 => 63,  166 => 62,  161 => 59,  152 => 57,  148 => 56,  143 => 53,  139 => 52,  133 => 50,  131 => 49,  123 => 44,  119 => 42,  116 => 41,  112 => 39,  106 => 37,  103 => 36,  97 => 34,  95 => 33,  87 => 28,  78 => 24,  74 => 22,  71 => 21,  64 => 17,  61 => 16,  58 => 15,  52 => 12,  49 => 11,  43 => 8,  40 => 7,  35 => 4,  32 => 3,);
     }
 }

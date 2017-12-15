@@ -1,0 +1,24 @@
+{% extends "index.html" %}
+
+{% block title %}
+KVidaCMS
+{% endblock %}
+
+{% block header %}
+{{ include('viewHeader.html') }}
+{% endblock %}
+
+
+{% block sitebar %}
+<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+    {{ sideBarCategories | raw }}
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container"> 
+    <div class="row">
+        {{textPage | raw }}
+    </div>
+</div>
+{% endblock %}

@@ -8,6 +8,21 @@
 
         <script type="text/javascript" src="/theme/assets/lib/jquery-3.1.0.min.js"></script>
         <script type="text/javascript" src="/theme/assets/lib/bootstrap/js/bootstrap.js"></script>
+        <script type="text/javascript">
+            function getCookie(name) {
+              var matches = document.cookie.match(new RegExp(
+                "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+              ));
+              return matches ? decodeURIComponent(matches[1]) : undefined;
+            }
+
+            function calculateProductsCount() {
+                var products = JSON.parse(getCookie('product_cart') || '{"0":0}'),
+                    counts = Object.values(products);
+
+                return counts.reduce(function(a,b){return(parseInt(a)+parseInt(b))}) || '';
+            }
+        </script>
     </head>
     <body>
         <div id="wrapper">

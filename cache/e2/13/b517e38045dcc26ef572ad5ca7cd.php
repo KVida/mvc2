@@ -72,7 +72,7 @@ class __TwigTemplate_e213b517e38045dcc26ef572ad5ca7cd extends Twig_Template
             ";
         // line 25
         $context['_parent'] = (array) $context;
-        $context['_seq'] = twig_ensure_traversable(range(0, $this->getAttribute((isset($context["contentVariant"]) ? $context["contentVariant"] : null), "stock")));
+        $context['_seq'] = twig_ensure_traversable(range(1, $this->getAttribute((isset($context["contentVariant"]) ? $context["contentVariant"] : null), "stock")));
         foreach ($context['_seq'] as $context["_key"] => $context["i"]) {
             // line 26
             echo "                ";
@@ -109,8 +109,31 @@ class __TwigTemplate_e213b517e38045dcc26ef572ad5ca7cd extends Twig_Template
         echo "  
     </div>
     <div class=\"col-lg-1 col-md-1 col-sm-1 col-xs-1\">
+        <a class=\"btn btn-danger pull-right btn_delete_js\" aria-label=\"Bold\" data-productId=\"";
+        // line 38
+        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["contentProducts"]) ? $context["contentProducts"] : null), "id"), "html", null, true);
+        echo "\"><span class=\"glyphicon glyphicon-remove\"></span></a>
     </div>
-</div>";
+</div>
+
+<script type=\"text/javascript\">
+    \$(function(){
+        \$('.btn_delete_js').click(function(e){
+            \$.ajax({
+                method : 'POST',
+                url : '/core/ajax_delete.php',
+                dataType : 'json',
+                data : {
+                    id : \$(e.currentTarget).attr('data-productId')
+                }, 
+                success : function(dataName) {
+                    \$('.productCart').text(calculateProductsCount());
+                    location.reload();
+                }
+            });
+        });
+    });
+</script>";
     }
 
     public function getTemplateName()
@@ -125,6 +148,6 @@ class __TwigTemplate_e213b517e38045dcc26ef572ad5ca7cd extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  108 => 35,  97 => 31,  89 => 29,  81 => 27,  78 => 26,  74 => 25,  69 => 22,  66 => 21,  62 => 19,  56 => 17,  53 => 16,  47 => 14,  45 => 13,  38 => 9,  34 => 8,  28 => 5,  22 => 2,  19 => 1,);
+        return array (  114 => 38,  108 => 35,  97 => 31,  89 => 29,  81 => 27,  78 => 26,  74 => 25,  69 => 22,  66 => 21,  62 => 19,  56 => 17,  53 => 16,  47 => 14,  45 => 13,  38 => 9,  34 => 8,  28 => 5,  22 => 2,  19 => 1,);
     }
 }

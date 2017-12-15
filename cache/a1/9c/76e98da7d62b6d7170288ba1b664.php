@@ -232,7 +232,7 @@ class __TwigTemplate_a19c76e98da7d62b6d7170288ba1b664 extends Twig_Template
                     amount : \$('#selectManyPurchases_js').val(),
                 }, 
                 success : function(dataName) {
-                    console.log(dataName);
+                    \$('.productCart').text(calculateProductsCount());
                 }
             });
         });

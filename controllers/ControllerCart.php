@@ -37,7 +37,7 @@ class ControllerCart extends Core
                 for ($i=0; $i < $countPost; $i++) { 
                     $product_carts[$id_product[$i]] = $amount_product[$i];
                 }
-                setcookie('product_cart', serialize($product_carts), time()+3600*24*30,'/');
+                setcookie('product_cart', json_encode($product_carts), time()+3600*24*30,'/');
                 
                 if (isset($_SESSION['id_user'])) {
                     $displayCSSorder = 'none';
@@ -47,7 +47,7 @@ class ControllerCart extends Core
                     header( 'Location: /authorization/');
                 }
             } else {
-                $product_carts = unserialize($_COOKIE['product_cart']);
+                $product_carts = json_decode($_COOKIE['product_cart'], true);
                 $displayCSSorder = 'block';
                 $displayCSSuser = 'none';
             }
@@ -128,7 +128,7 @@ class ControllerCart extends Core
                 $order->total_price = $request->post('orderTotalPrise');
 
                 $id_order = $orders->idOrderProduct()['MaxId']+1;
-                $product_carts = unserialize($_COOKIE['product_cart']);
+                $product_carts = json_decode($_COOKIE['product_cart'], true);
 
                 foreach ($product_carts as $productId => $amountProduct) {
                     $purchase = new stdClass();
@@ -177,7 +177,7 @@ class ControllerCart extends Core
                     $array_vars['order' ] = $order;
 
                 } else {
-                    setcookie('product_cart', serialize($product_cart), time()-3600*24*30,'/');
+                    setcookie('product_cart', json_encode($product_cart), time()-3600*24*30,'/');
                     header( 'Location: /order_made');//сообщение  о  заказе
                 }
             }

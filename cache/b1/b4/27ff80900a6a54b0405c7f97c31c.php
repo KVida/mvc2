@@ -34,30 +34,45 @@ class __TwigTemplate_b1b427ff80900a6a54b0405c7f97c31c extends Twig_Template
 
         <script type=\"text/javascript\" src=\"/theme/assets/lib/jquery-3.1.0.min.js\"></script>
         <script type=\"text/javascript\" src=\"/theme/assets/lib/bootstrap/js/bootstrap.js\"></script>
+        <script type=\"text/javascript\">
+            function getCookie(name) {
+              var matches = document.cookie.match(new RegExp(
+                \"(?:^|; )\" + name.replace(/([\\.\$?*|{}\\(\\)\\[\\]\\\\\\/\\+^])/g, '\\\\\$1') + \"=([^;]*)\"
+              ));
+              return matches ? decodeURIComponent(matches[1]) : undefined;
+            }
+
+            function calculateProductsCount() {
+                var products = JSON.parse(getCookie('product_cart') || '{\"0\":0}'),
+                    counts = Object.values(products);
+
+                return counts.reduce(function(a,b){return(parseInt(a)+parseInt(b))}) || '';
+            }
+        </script>
     </head>
     <body>
         <div id=\"wrapper\">
             ";
-        // line 14
+        // line 29
         $this->displayBlock('header', $context, $blocks);
-        // line 16
+        // line 31
         echo "
             ";
-        // line 17
+        // line 32
         $this->displayBlock('navbar', $context, $blocks);
-        // line 19
+        // line 34
         echo "
             <div class=\"container\"> 
                 <div class=\"row\">
                     ";
-        // line 22
+        // line 37
         $this->displayBlock('sitebar', $context, $blocks);
-        // line 24
+        // line 39
         echo "                
                     ";
-        // line 25
+        // line 40
         $this->displayBlock('content', $context, $blocks);
-        // line 27
+        // line 42
         echo "                </div>
             </div>
 
@@ -79,31 +94,31 @@ class __TwigTemplate_b1b427ff80900a6a54b0405c7f97c31c extends Twig_Template
     {
     }
 
-    // line 14
+    // line 29
     public function block_header($context, array $blocks = array())
     {
-        // line 15
+        // line 30
         echo "            ";
     }
 
-    // line 17
+    // line 32
     public function block_navbar($context, array $blocks = array())
     {
-        // line 18
+        // line 33
         echo "            ";
     }
 
-    // line 22
+    // line 37
     public function block_sitebar($context, array $blocks = array())
     {
-        // line 23
+        // line 38
         echo "                    ";
     }
 
-    // line 25
+    // line 40
     public function block_content($context, array $blocks = array())
     {
-        // line 26
+        // line 41
         echo "                    ";
     }
 
@@ -114,6 +129,6 @@ class __TwigTemplate_b1b427ff80900a6a54b0405c7f97c31c extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  107 => 26,  104 => 25,  100 => 23,  97 => 22,  93 => 18,  90 => 17,  86 => 15,  83 => 14,  78 => 4,  61 => 27,  59 => 25,  56 => 24,  54 => 22,  49 => 19,  47 => 17,  44 => 16,  42 => 14,  29 => 4,  24 => 1,);
+        return array (  122 => 41,  119 => 40,  115 => 38,  112 => 37,  108 => 33,  105 => 32,  101 => 30,  98 => 29,  93 => 4,  76 => 42,  74 => 40,  71 => 39,  69 => 37,  64 => 34,  62 => 32,  59 => 31,  57 => 29,  29 => 4,  24 => 1,);
     }
 }
